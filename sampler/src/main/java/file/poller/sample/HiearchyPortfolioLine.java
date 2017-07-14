@@ -5,7 +5,7 @@ import file.watcher.line.Line;
 /**
  * Created by bradai on 28/06/2017.
  */
-public class HiearchyPortfolioLine extends Line {
+public class HiearchyPortfolioLine implements Line {
 
     private String compID;
     private  String compoCode;

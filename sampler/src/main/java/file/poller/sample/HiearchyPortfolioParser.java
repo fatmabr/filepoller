@@ -1,7 +1,7 @@
 package file.poller.sample;
 
-import file.watcher.CSVFileParser;
 import file.watcher.line.Line;
+import file.watcher.parser.CSVFileParser;
 
 /**
  * Created by bradai on 28/06/2017.
