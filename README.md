@@ -1,8 +1,8 @@
-# filepoller
+## filepoller
 
-This is a small project representing a simple API in order to develop simple file processor.
+#This is a small project representing a simple API in order to develop simple file processor.
 
-It consists of :
+#It consists of :
 - Implementing the Line interface in order to define the object to encapsulate each line in the parsed file.
 - Extending the AbstractFileProcessor class and implementing the process method in order to plug specific treatment for each line while parsing.
 - The api presents a specific file parser for the specific CSV file type.
@@ -18,5 +18,5 @@ TODO:
 - Add unit tests
 - Review once a time the code.
 
-//Enhancement
+ENHANCEMENT:
 - fetch a way in order to configure the specific classes more implicitly. (Autowiring by type)
