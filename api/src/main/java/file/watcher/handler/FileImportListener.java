@@ -15,7 +15,7 @@ import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
  */
 public class FileImportListener implements Runnable {
 
-    WatchService watcher ;
+    WatchService watcher;
     FileImportHandler handler;
 
     public FileImportListener(WatchService watcher, FileImportHandler handler) {
@@ -23,7 +23,6 @@ public class FileImportListener implements Runnable {
         this.handler = handler;
     }
 
-    @Override
     public void run() {
         while (true) {
             WatchKey key;
@@ -36,7 +35,6 @@ public class FileImportListener implements Runnable {
             for (WatchEvent<?> event : key.pollEvents()) {
                 WatchEvent.Kind<?> kind = event.kind();
 
-                @SuppressWarnings("unchecked")
                 WatchEvent<Path> ev = (WatchEvent<Path>) event;
                 Path fileName = ev.context();
 
@@ -44,11 +42,9 @@ public class FileImportListener implements Runnable {
 
                 if (kind == ENTRY_CREATE) {
                     System.out.println("File imported !!!");
-                    try {
-                        handler.handle(fileName.toFile());
-                    } catch (IOException e) {
-                        //TODO add logs.
-                    }
+
+                    handler.handle(fileName.toFile());
+
                 }
             }
 

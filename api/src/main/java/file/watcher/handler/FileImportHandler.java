@@ -5,6 +5,7 @@ import file.watcher.parser.FileParser;
 import file.watcher.processor.AbstractFileProcessor;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -17,13 +18,18 @@ import static java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY;
 /**
  * Created by bradai on 28/06/2017.
  */
+
+
 @Component
 public class FileImportHandler implements InitializingBean {
 
     @Autowired
     ProcessorRegistry registry;
 
-    public void handle(File file) throws IOException {
+    @Value( "${watched.file}" )
+    private String watchedDir;
+
+    public void handle(File file) {
         final AbstractFileProcessor fileProcessor = registry.matchProcessor(file.getName());
         if (fileProcessor != null) {
             FileParser fileParser = fileProcessor.getFileParser();
@@ -37,7 +43,7 @@ public class FileImportHandler implements InitializingBean {
 
 
     public void afterPropertiesSet() throws Exception {
-        Path dir = Paths.get("C:\\Users\\fatma\\poller");
+        Path dir = Paths.get(watchedDir);
         WatchService watcher = FileSystems.getDefault().newWatchService();
 
         WatchKey key = dir.register(watcher,

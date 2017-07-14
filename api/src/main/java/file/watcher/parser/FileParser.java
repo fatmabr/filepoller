@@ -12,6 +12,5 @@ import java.util.List;
 public interface FileParser {
      List<Line> parse(File file);
      Line newLine(String[] line);
-
-    Line nextLine() throws IOException;
+     Line nextLine();
 }
