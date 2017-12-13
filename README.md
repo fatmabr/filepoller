@@ -17,6 +17,7 @@ TODO:
 - Configure Loggers.
 - Add unit tests
 - Review once a time the code.
+- parallel process the injected file.
 
 ENHANCEMENT:
 - fetch a way in order to configure the specific classes more implicitly. (Autowiring by type)
